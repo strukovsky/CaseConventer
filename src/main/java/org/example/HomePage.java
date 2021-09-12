@@ -5,6 +5,7 @@ import org.apache.wicket.ajax.AjaxRequestTarget;
 import org.apache.wicket.ajax.markup.html.form.AjaxFallbackButton;
 import org.apache.wicket.markup.html.WebPage;
 import org.apache.wicket.markup.html.basic.Label;
+import org.apache.wicket.markup.html.form.Button;
 import org.apache.wicket.markup.html.form.Form;
 import org.apache.wicket.markup.html.form.TextField;
 import org.apache.wicket.model.Model;
@@ -37,6 +38,13 @@ public class HomePage extends WebPage {
 				result.setModelObject(value.toLowerCase(Locale.ROOT));
 				if(ajaxRequestTarget!=null)
 					ajaxRequestTarget.addComponent(result);
+			}
+		});
+		form.add(new Button("clear") {
+			@Override
+			public void onSubmit() {
+				result.setModelObject("");
+				text.setModelObject("");
 			}
 		});
 
